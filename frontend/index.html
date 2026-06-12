@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Level Monitor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💧 Water Level Monitor</h1>
+            <p class="subtitle">Real-time monitoring & firmware management</p>
+        </div>
+        
+        <!-- Status Gauges -->
+        <div class="gauges">
+            <div class="gauge">
+                <h3>Water Level</h3>
+                <div class="gauge-value" id="waterLevel">---%</div>
+                <div class="gauge-bar">
+                    <div class="gauge-fill" id="waterFill" style="width: 0%"></div>
+                </div>
+                <p class="gauge-label" id="waterLabel">Loading...</p>
+            </div>
+            
+            <div class="gauge">
+                <h3>Battery</h3>
+                <div class="gauge-value" id="batteryLevel">---%</div>
+                <div class="gauge-bar">
+                    <div class="gauge-fill" id="batteryFill" style="width: 0%"></div>
+                </div>
+                <p class="gauge-label" id="batteryLabel">Loading...</p>
+            </div>
+        </div>
+        
+        <!-- Status Info -->
+        <div class="status">
+            <p>📅 Last Updated: <span id="lastUpdate">Never</span></p>
+            <p>📦 Firmware Version: <span id="firmwareVersion">Unknown</span></p>
+            <p id="updateStatus" style="color: #667eea; font-weight: bold;"></p>
+        </div>
+        
+        <!-- History Chart -->
+        <div class="chart-container">
+            <h3>📊 7-Day History</h3>
+            <canvas id="historyChart"></canvas>
+        </div>
+        
+        <!-- Alerts -->
+        <div class="alerts-container" id="alertsContainer">
+            <h3>⚠️ Recent Alerts</h3>
+            <div id="alertsList">
+                <p style="color:#999; text-align:center; padding:20px;">No alerts yet</p>
+            </div>
+        </div>
+
+        <!-- Firmware Update Log -->
+        <div class="update-log-section" id="updateLogSection">
+            <h3>🔄 Firmware Update Log</h3>
+            <div id="updateLogList">
+                <p style="color:#999; text-align:center; padding:20px;">No updates yet</p>
+            </div>
+        </div>
+
+        <!-- Firmware Manager -->
+        <div class="firmware-section">
+            <h3>🔧 Firmware Management</h3>
+            <div class="firmware-content">
+                <div class="upload-form">
+                    <h4>Upload New Firmware</h4>
+                    <input type="file" id="firmwareFile" accept=".bin" placeholder="Select .bin file">
+                    <input type="text" id="versionInput" placeholder="Version (e.g., 2.0)">
+                    <button onclick="uploadFirmware()">Upload</button>
+                </div>
+                
+                <div class="versions-list">
+                    <h4>Available Versions</h4>
+                    <div id="versionsList" class="versions-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

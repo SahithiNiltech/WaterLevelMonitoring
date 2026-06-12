@@ -1,0 +1,405 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #667eea;
+    --secondary: #764ba2;
+    --success: #00d084;
+    --warning: #ffa502;
+    --danger: #ff6b6b;
+    --light: #f8f9fa;
+    --dark: #2d3436;
+    --border-radius: 12px;
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--dark);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 40px 30px;
+    box-shadow: var(--shadow);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 36px;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 16px;
+}
+
+/* Gauges */
+.gauges {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.gauge {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.gauge:hover {
+    transform: translateY(-5px);
+}
+
+.gauge h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.gauge-value {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--secondary);
+    margin-bottom: 15px;
+}
+
+.gauge-bar {
+    width: 100%;
+    height: 35px;
+    background: #e0e0e0;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+}
+
+.gauge-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: width 0.6s ease;
+}
+
+.gauge-label {
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* Status */
+.status {
+    background: #f0f4ff;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 40px;
+    border-left: 4px solid var(--primary);
+}
+
+.status p {
+    margin: 8px 0;
+    font-size: 15px;
+    color: #333;
+}
+
+.status span {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* Chart */
+.chart-container {
+    margin-bottom: 40px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.chart-container h3 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.chart-container canvas {
+    max-height: 350px;
+}
+
+/* Alerts */
+.alerts-container {
+    margin-bottom: 40px;
+    padding: 30px;
+    background: #fffacd;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--warning);
+}
+
+.alerts-container h3 {
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+#alertsList {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.alert-item {
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    border-left: 3px solid var(--warning);
+    font-size: 14px;
+}
+
+/* Update Log */
+.update-log-section {
+    margin-bottom: 40px;
+    padding: 30px;
+    background: #f0f4ff;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.update-log-section h3 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+#updateLogList {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Firmware Section */
+.firmware-section {
+    border-top: 2px solid #e0e0e0;
+    padding-top: 40px;
+}
+
+.firmware-section h3 {
+    color: var(--primary);
+    margin-bottom: 25px;
+}
+
+.firmware-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.upload-form,
+.versions-list {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.upload-form h4,
+.versions-list h4 {
+    color: var(--dark);
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.upload-form input,
+.upload-form button {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.upload-form input {
+    background: white;
+}
+
+.upload-form input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.upload-form button {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.upload-form button:active {
+    transform: translateY(0);
+}
+
+.versions-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.version-item {
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.version-item:hover {
+    border-color: var(--primary);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.version-item.current {
+    background: #e8f0ff;
+    border-color: var(--primary);
+}
+
+.version-info {
+    flex: 1;
+}
+
+.version-number {
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 16px;
+}
+
+.version-details {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.version-item button {
+    padding: 8px 15px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.version-item button:hover {
+    background: var(--secondary);
+}
+
+.version-item.current button {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 28px;
+    }
+    
+    .gauges {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .gauge-value {
+        font-size: 36px;
+    }
+    
+    .firmware-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .version-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .version-item button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+    
+    .header h1 {
+        font-size: 24px;
+    }
+    
+    .header {
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+    }
+    
+    .gauge {
+        padding: 20px;
+    }
+    
+    .gauge-value {
+        font-size: 32px;
+    }
+    
+    .upload-form,
+    .versions-list {
+        padding: 15px;
+    }
+}
